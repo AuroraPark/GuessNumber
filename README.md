@@ -12,3 +12,5 @@ However, if you can't find a random number, you can see the red light body.
 ![](https://github.com/AuroraPark/GuessNumber/assets/47839204/436dcccd-6e8c-4d1e-8462-0919b46bbab2)
 
 So , good luck to find a random number in 20 times.
+
+Also you can check hiscore level, too.
