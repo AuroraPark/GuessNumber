@@ -1,6 +1,6 @@
 # Guess Random number Generator
 
-![🚀Go To the Demo Page](https://aurorapark.github.io/GuessNumber/)
+[🚀Go To the Demo Page](https://aurorapark.github.io/GuessNumber/)
 
 ## It can create a random number generator, and We can find out that number.
 
