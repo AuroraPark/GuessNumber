@@ -1,24 +1,25 @@
 'use strict';
 
-document.querySelector('.score').textContent = 20;
-let score = document.querySelector('.score').textContent;
-let randomValue = 0;
+let score = 20;
 let highScore = 0;
+let randomValue = 0;
 
+// create a random number
 function getRandomInt() {
   randomValue = Math.trunc(Math.random() * 20) + 1;
-  console.log(randomValue);
 }
 getRandomInt();
 
 const setMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
+
 const calcScore = function (message) {
   setMessage(message);
   score--;
   document.querySelector('.score').textContent = score;
 };
+
 const checkValue = function () {
   let value = Number(document.querySelector('.guess').value);
 
@@ -26,7 +27,6 @@ const checkValue = function () {
   if (!value) {
     alert('⛔️ Input correct Number');
     document.querySelector('input').focus();
-    console.log(randomValue);
     // if value correct number
   } else if (value === randomValue) {
     setMessage('🎉 Correct Number!');
@@ -39,19 +39,16 @@ const checkValue = function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-    // if value lower than random value
-  } else if (value < randomValue) {
-    if (score <= 0) {
-      setMessage('💣 You lost the game...');
+    // if value not correct random value
+  } else if (value !== randomValue) {
+    if (score > 1) {
+      calcScore(value > randomValue ? '👎 Down Number!' : '👍 Up Number');
     } else {
-      calcScore('👍 Up Number');
-    }
-    // if value higher than random value
-  } else {
-    if (score <= 0) {
-      setMessage('💣 You lost the game...');
-    } else {
-      calcScore('👎 Down Number!');
+      setMessage('💣 You lost the game !');
+      document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = 'red';
+      document.querySelector('.number').textContent = randomValue;
+      document.querySelector('.check').style.display = 'none';
     }
   }
 };
@@ -59,12 +56,13 @@ const checkValue = function () {
 const againGuess = function () {
   score = 20;
   document.querySelector('.score').textContent = score;
-
   document.querySelector('.guess').value = '';
-  setMessage('Start guessing...');
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').textContent = '?';
   document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.check').style.display = 'block';
+
+  setMessage('Start guessing...');
 
   getRandomInt();
 };
